@@ -1,0 +1,426 @@
+meegofeedback-reactionmaps (0.14.1-8) unstable; urgency=low
+
+  * Fixes: NB#228918 - meegreactionmap provides dev package with missing dependencies
+  * Changes: Fixes issues with reactionmap viewer
+  * Changes: Removed libmeegotouch build dependency
+
+ -- Antti Pulakka <ext-antti.j.pulakka@nokia.com>  Tue, 22 Feb 2011 09:49:33 +0200
+
+meegofeedback-reactionmaps (0.14.1-7) unstable; urgency=low
+
+  * Fixes: NB#216039 - Reaction maps do not work as expected
+  * Changes: Added support for 'nodocs' debian flag
+
+ -- Antti Pulakka <ext-antti.j.pulakka@nokia.com>  Tue, 11 Jan 2011 15:41:25 +0200
+
+meegofeedback-reactionmaps (0.14.1-6) unstable; urgency=low
+
+  * Removed obsolete libmeegoreactionmap-mcompositor-tests package
+
+ -- Antti Pulakka <ext-antti.j.pulakka@nokia.com>  Tue, 07 Dec 2010 11:12:13 +0200
+
+meegofeedback-reactionmaps (0.14.1-5) unstable; urgency=low
+
+  * Refactored MfXListener to use xcb instead of Xlib
+  * Removed X calibration data reading
+  * Added --as-needed to linker flags to avoid unnecessary linking
+
+ -- Antti Pulakka <ext-antti.j.pulakka@nokia.com>  Fri, 03 Dec 2010 15:56:57 +0200
+
+meegofeedback-reactionmaps (0.14.1-4) unstable; urgency=low
+
+  * Fixes: NB#202538 - meegofeedbackd dumps core when Xorg is killed with SIGKILL signal
+  * Minor changes to window ID handling
+  * Fixed issue of not using optimization flags when building package
+
+ -- Antti Pulakka <ext-antti.j.pulakka@nokia.com>  Wed, 17 Nov 2010 09:36:07 +0200
+
+meegofeedback-reactionmaps (0.14.1-3) unstable; urgency=low
+
+  * Fixes: NB#199731 - COREWEB: /usr/bin/meegofeedbackd '_Unwind_VRS_Pop...
+  * Changed testrunner dependency to testrunner-lite
+
+ -- Antti Pulakka <ext-antti.j.pulakka@nokia.com>  Fri, 22 Oct 2010 15:47:58 +0200
+
+meegofeedback-reactionmaps (0.14.1-2) unstable; urgency=low
+
+  * Updated debian dependencies
+
+ -- Antti Pulakka <ext-antti.j.pulakka@nokia.com>  Mon, 11 Oct 2010 15:25:51 +0200
+
+meegofeedback-reactionmaps (0.14.1-1) unstable; urgency=low
+
+  * Implemented: SWP#FEFRA-449, SWP#FEFRA-441, SWP#FEFRA-440
+
+ -- Csaba Kertesz <csaba.kertesz@vincit.fi>  Thu, 07 Oct 2010 12:23:51 +0200
+
+meegofeedback-reactionmaps (0.14.0-6) unstable; urgency=low
+
+  * Touch Screen kernel interface is closed when screen is dimmed or off
+  * Touch Screen kernel interface is closed when no reactionmaps active
+  * Added functional test for above cases
+  * Documentation improved and proof-read
+
+ -- Antti Pulakka <ext-antti.j.pulakka@nokia.com>  Mon, 23 Aug 2010 16:16:32 +0200
+
+meegofeedback-reactionmaps (0.14.0-5) unstable; urgency=low
+
+  * Fix for a memory leak similar to NB#182656 in meegofeedbackd daemon
+  * Fix a bug in MReactionMap::fillItemBoundRect()
+
+ -- Antti Pulakka <ext-antti.j.pulakka@nokia.com>  Mon, 02 Aug 2010 14:31:32 +0200
+
+meegofeedback-reactionmaps (0.14.0-4) unstable; urgency=low
+
+  * Fix NB#182188 - meegofeedback-reactionmaps is not buildable with cs2009q3 (hardfp) toolchain
+
+ -- Csaba Kertesz <csaba.kertesz@vincit.fi>  Wed, 28 Jul 2010 00:13:46 +0200
+
+meegofeedback-reactionmaps (0.14.0-3) unstable; urgency=low
+
+  * Modified documentation to comply with guidelines
+  * Adapted to meegofeedbackd daemon's new way of loading plugins
+  * Implemented: SWP#FEFRA-374
+
+ -- Antti Pulakka <ext-antti.j.pulakka@nokia.com>  Thu, 10 Jun 2010 15:03:17 +0200
+
+meegofeedback-reactionmaps (0.14.0-2) unstable; urgency=low
+
+  * Small documentation fix
+  * Fix an internal dependency of the packages
+  * Fixes: NB#168141 meegofeedbackd crash
+
+ -- Antti Pulakka <ext-antti.j.pulakka@nokia.com>  Wed, 19 May 2010 12:32:32 +0200
+
+meegofeedback-reactionmaps (0.14.0-1) unstable; urgency=low
+
+  * Adaptation to MeeGo Touch
+
+ -- Antti Pulakka <ext-antti.j.pulakka@nokia.com>  Wed, 21 Apr 2010 12:35:24 +0200
+
+duifeedback-reactionmaps (0.13.4-1) unstable; urgency=low
+
+  * New timestamping code
+  * Fix to libdui 0.20
+
+ -- Csaba Kertesz <csaba.kertesz@vincit.fi>  Thu, 15 Apr 2010 14:32:46 +0300
+
+duifeedback-reactionmaps (0.13.3-6) unstable; urgency=low
+
+  * Fixed duireactionmap-viewer command line option validation
+  * Fixed duireactionmap-viewer reaction map updating 
+
+ -- Antti Pulakka <ext-antti.j.pulakka@nokia.com>  Wed, 31 Mar 2010 15:39:42 +0200
+
+duifeedback-reactionmaps (0.13.3-5) unstable; urgency=low
+
+  * Fixed connecting to X server
+  * Fixed documentation building
+
+ -- Antti Pulakka <ext-antti.j.pulakka@nokia.com>  Thu, 25 Mar 2010 14:38:12 +0200
+
+duifeedback-reactionmaps (0.13.3-4) unstable; urgency=low
+
+  * Fix the dependencies for the new functional test
+
+ -- Csaba Kertesz <csaba.kertesz@vincit.fi>  Thu, 11 Mar 2010 9:18:12 +0200
+
+duifeedback-reactionmaps (0.13.3-3) unstable; urgency=low
+
+  * Fixed a project file
+
+ -- Csaba Kertesz <csaba.kertesz@vincit.fi>  Wed, 10 Mar 2010 15:19:44 +0200
+
+duifeedback-reactionmaps (0.13.3-2) unstable; urgency=low
+
+  * Fixed dependencies
+
+ -- Csaba Kertesz <csaba.kertesz@vincit.fi>  Wed, 10 Mar 2010 15:19:44 +0200
+
+duifeedback-reactionmaps (0.13.3-1) unstable; urgency=low
+
+  * New functional test against duicompositor
+  * Fixed new touchscreen kernel API
+  * Fremantle adaptation
+
+ -- Csaba Kertesz <csaba.kertesz@vincit.fi>  Wed, 10 Mar 2010 11:59:11 +0200
+
+duifeedback-reactionmaps (0.13.1-1) unstable; urgency=low
+
+  * Implemented: SWP#FEFRA-131
+  * Implemented: SWP#FEFRA-327
+  * Use new touchscreen kernel API
+
+ -- Csaba Kertesz <csaba.kertesz@vincit.fi>  Wed, 10 Feb 2010 15:29:11 +0200
+
+duifeedback-reactionmaps (0.13.0-6) unstable; urgency=low
+
+  * New release
+
+ -- Csaba Kertesz <csaba.kertesz@vincit.fi>  Fri, 22 Jan 2010 12:38:01 +0200
+
+duifeedback-reactionmaps (0.13.0-5) unstable; urgency=low
+
+  * Implemented: SWP#FEFRA-115
+  * Implemented: SWP#FEFRA-229
+  * Implemented: SWP#FEFRA-319
+  * CI compliant test package
+
+ -- Csaba Kertesz <csaba.kertesz@vincit.fi>  Fri, 15 Jan 2010 14:43:01 +0200
+
+duifeedback-reactionmaps (0.13.0-4) unstable; urgency=low
+
+  * Fixes: NB#151007 libduifeedback-reactionmap.so is not stripped wasting precious space in PR
+
+ -- Csaba Kertesz <csaba.kertesz@vincit.fi>  Fri, 18 Dec 2009 14:56:01 +0200
+
+duifeedback-reactionmaps (0.13.0-3) unstable; urgency=low
+
+  * Fixes: NB#150770 duifeedback-reactionmaps fails to build under the Platform SDK (SB2)
+  * Implemented: SWP#FEFRA-285
+  * Fixes in unit tests
+
+ -- Csaba Kertesz <csaba.kertesz@vincit.fi>  Tue, 15 Dec 2009 16:13:01 +0200
+
+duifeedback-reactionmaps (0.13.0-1) unstable; urgency=low
+
+  * New release
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Fri, 27 Nov 2009 13:03:01 +0200
+
+duifeedback-reactionmaps (0.12.1-1) unstable; urgency=low
+
+  * Implemented: SWP#FEFRA-289
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Wed, 18 Nov 2009 15:33:11 +0200
+
+duifeedback-reactionmaps (0.12.0-2) unstable; urgency=low
+
+  * Updated version of libduifeedback-dev build dependency
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Wed, 11 Nov 2009 13:37:54 +0200
+
+duifeedback-reactionmaps (0.12.0-1) unstable; urgency=low
+
+  * Implemented: SWP#FEFRA-288
+  * Some fixes in reaction map manipulation
+  * Fixes in reconnection between DuiReactionMap and duifeedbackd
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Wed, 11 Nov 2009 13:26:42 +0200
+
+duifeedback-reactionmaps (0.11.0-1) unstable; urgency=low
+
+  * Implemented: SWP#FEFRA-202
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Mon, 02 Nov 2009 10:20:03 +0200
+
+duifeedback-reactionmaps (0.10.0-5) unstable; urgency=low
+
+  * It's zlib1g-dev, not zlvib1g-dev
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Thu, 22 Oct 2009 08:57:58 +0300
+
+duifeedback-reactionmaps (0.10.0-4) unstable; urgency=low
+
+  * Adding build dependency to zlvib1g-dev
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Thu, 22 Oct 2009 08:51:41 +0300
+
+duifeedback-reactionmaps (0.10.0-3) unstable; urgency=low
+
+  * Again fiddling with build dependencies hoping that bifh gets happy
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Wed, 21 Oct 2009 14:38:06 +0300
+
+duifeedback-reactionmaps (0.10.0-2) unstable; urgency=low
+
+  * Added build dependency to libxext-dev
+  * Set client library version to 0.10.0
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Wed, 21 Oct 2009 09:02:39 +0300
+
+duifeedback-reactionmaps (0.10.0-1) unstable; urgency=low
+
+  * Implemented SWP#FEFRA-212
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Tue, 20 Oct 2009 15:36:18 +0300
+
+duifeedback-reactionmaps (0.9.0-1) unstable; urgency=low
+
+  * Changes: Rename the packages
+
+ -- Csaba Kertesz <csaba.kertesz@vincit.fi>  Mon, 07 Sep 2009 11:32:31 +0300
+
+feedback-reactor (0.8.2-2) unstable; urgency=low
+
+  * Implemented: SWP#FEFRA-132
+
+ -- Csaba Kertesz <csaba.kertesz@vincit.fi>  Mon, 31 Aug 2009 08:35:38 +0300
+
+feedback-reactor (0.8.1~1) unstable; urgency=low
+
+  * Preliminary version bump [UNRELEASED]
+
+ -- Tobias Koch <ext-tobias.koch@nokia.com>  Fri, 17 Jul 2009 10:20:00 +0300
+
+feedback-reactor (0.8.0-1) unstable; urgency=low
+
+  * Implemented SWP#FEFRA-161
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Wed, 15 Jul 2009 09:12:59 +0300
+
+feedback-reactor (0.7.0-1) unstable; urgency=low
+
+  * Made libduifeedback-reactionmaps depend on duifeedback-reactionmaps
+  * Small fix on handling of QGraphicsView transformation matrix
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Thu,  4 Jun 2009 12:04:48 +0300
+
+feedback-reactor (0.7.0~1) unstable; urgency=low
+
+  * Tagged pre-release to satisfy dependencies of input methods
+
+ -- Tobias Koch <ext-tobias.koch@nokia.com>  Mon, 01 Jun 2009 19:34:51 +0300
+
+feedback-reactor (0.6.3-1) unstable; urgency=low
+
+  * Fixed /dev/input/event* reading
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Mon, 25 May 2009 10:51:51 +0300
+
+feedback-reactor (0.6.2-1) unstable; urgency=low
+
+  * Implemented SWP#FEFRA-114
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Fri, 22 May 2009 16:00:16 +0300
+
+feedback-reactor (0.6.1-1) unstable; urgency=low
+
+  * Small fix on client lib
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Fri,  8 May 2009 15:24:05 +0300
+
+feedback-reactor (0.6.0-1) unstable; urgency=low
+
+  * Implemented SWP#FEFRA-102
+  * Implemented SWP#FEFRA-133
+  * Added painter() and itemToReactionMapTransform() to client lib API
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Wed,  6 May 2009 10:37:19 +0300
+
+feedback-reactor (0.5.1-1) unstable; urgency=low
+
+  * Reading reaction map dimensions from config file.
+  * Shared memory access among different users
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Sat, 25 Apr 2009 11:53:15 +0300
+
+feedback-reactor (0.5.0-1) unstable; urgency=low
+
+  * Implemented SWP#FEFRA-113
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Fri, 17 Apr 2009 09:31:49 +0300
+
+feedback-reactor (0.4.1-1) unstable; urgency=low
+
+  * Fixed a broken unit test.
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Tue, 24 Mar 2009 12:23:49 +0200
+
+feedback-reactor (0.4.0-1) unstable; urgency=low
+
+  * Implemented SWP#FEFRA-81
+  * Refactoring to simplify code. Removed some overengineering.
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Mon, 23 Mar 2009 11:10:04 +0200
+
+feedback-reactor (0.3.0~2) unstable; urgency=low
+
+  * Fixed non-dev-pkg-with-shlib-symlink lintian warning for
+    libduifeedback-reactionmaps0
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Fri, 13 Mar 2009 15:54:36 +0200
+
+feedback-reactor (0.3.0-1) unstable; urgency=low
+
+  * feedback-reactor is now a duifeedbackd source, therefore a library,
+    instead of a stand alone daemon.
+  * It now provides a client library, libduifeedback-reactionmaps, that applications
+    link against to use feedback-reactor services.
+  * Implemented: SWP#FEFRA-48
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Fri, 13 Mar 2009 15:06:39 +0200
+
+feedback-reactor (0.2.1-2) unstable; urgency=low
+
+  * Not providing a feedback-reactor-dbg package anymore
+  * Solved lintian init.d-script-has-bad-lsb-line warning
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Tue, 24 Feb 2009 11:47:39 +0200
+
+feedback-reactor (0.2.1-1) unstable; urgency=low
+
+  * Removed unneeded build dependency on X11 libraries
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Tue, 24 Feb 2009 11:06:39 +0200
+
+feedback-reactor (0.2.0-1) unstable; urgency=low
+
+  * New version
+
+ -- Daniel d'Andrada <daniel.dandrada@nokia.com>  Mon, 23 Feb 2009 11:56:43 +0200
+
+feedback-reactor (0.1-8) unstable; urgency=low
+
+  * Added workaround for broken debhelper to debian/rules
+
+ -- Tobias Koch <ext-tobias.koch@nokia.com>  Tue, 27 Jan 2008 11:24:07 +0200
+
+feedback-reactor (0.1-7) unstable; urgency=low
+
+  * Enable verbose output of debhelpers
+
+ -- Tobias Koch <ext-tobias.koch@nokia.com>  Tue, 27 Jan 2008 19:22:07 +0200
+
+feedback-reactor (0.1-6) unstable; urgency=low
+
+  * Fixes to the packaging to shut up lintian
+
+ -- Tobias Koch <ext-tobias.koch@nokia.com>  Tue, 27 Jan 2008 15:37:07 +0200
+
+feedback-reactor (0.1-5) unstable; urgency=low
+
+  * Added build dependency on libxext-dev
+
+ -- Tobias Koch <ext-tobias.koch@nokia.com>  Tue, 27 Jan 2008 15:17:07 +0200
+
+feedback-reactor (0.1-4) unstable; urgency=low
+
+  * Added dependency on libts-dev
+
+ -- Tobias Koch <ext-tobias.koch@nokia.com>  Tue, 27 Jan 2008 14:57:07 +0200
+
+feedback-reactor (0.1-3) unstable; urgency=low
+
+  * First try at integration
+
+ -- Tobias Koch <ext-tobias.koch@nokia.com>  Tue, 27 Jan 2008 14:46:07 +0200
+
+feedback-reactor (0.1-2) unstable; urgency=low
+
+  * Renamed to feedback-reactor
+
+ -- Tobias Koch <ext-tobias.koch@nokia.com>  Tue, 20 Jan 2008 18:34:07 +0200
+
+duifeedbackd (0.1-2) unstable; urgency=low
+
+  * Added init script
+
+ -- Viacheslav Sobolev <ext-viacheslav.sobolev@nokia.com>  Thu, 18 Dec 2008 10:48:57 +0200
+
+duifeedbackd (0.1-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Viacheslav Sobolev <ext-viacheslav.sobolev@nokia.com>  Fri, 12 Dec 2008 11:11:08 +0200
+

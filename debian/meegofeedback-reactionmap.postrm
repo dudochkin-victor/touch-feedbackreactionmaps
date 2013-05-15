@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+
+if [ "$1" = "remove" ] ; then
+	rm -f /usr/lib/meegofeedbackd/sources/libmeegofeedback-reactionmap.so
+fi
+
+#DEBHELPER#
+
+exit 0
+

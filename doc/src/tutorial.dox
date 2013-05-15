@@ -1,0 +1,228 @@
+/*! @page tutorial Tutorial for MReactionMap
+@section Overview
+This tutorial shows how to make a  simple "Hello World!" application based on QGraphicsView and use mreactiomap to add haptic input feedback to it.
+
+What is described here also works for MeeGo Touch applications since MeeGo Touch is built on top of QGraphicsView.
+
+@section Section1 Packages needed
+Make sure you have the following packages installed in your scratchbox i386 target:
+
+- @c meegofeedback-reactionmap
+- @c libmeegoreactionmap0
+- @c libmeegoreactionmap-dev
+- @c libmeegoreactionmap-viewer
+- @c libmeegofeedback0
+- @c meegofeedbackd
+- @c meegofeedback-dummy
+
+@c meegofeedback-dummy  is a dummy backend for the meegofeedbackd daemon. It has to be installed it since we cannot use (or need) a real hardware for haptic feedback in scratchbox.
+
+@section Section2 The "Hello World!" sample application
+
+This sample application displays two rectangles. One containing the word "Hello" and the other one, "World".
+It is hardcoded to be displayed on a 864x480 screen.
+
+When you run it in scratchbox you should see the following in your Xephyr window:
+
+<img width="450" alt="meegoreactionmaptutorial1.png" src="meegoreactionmaptutorial1.png" height="262"></img>
+
+@subsection Subsection21 Contents of main.cpp
+
+@code
+#include <QApplication>
+#include <QPainter>
+
+#include <QGraphicsView>
+#include <QGraphicsRectItem>
+#include <QGraphicsSimpleTextItem>
+
+int main (int argc, char **argv)
+{
+    QApplication app(argc, argv);
+    QGraphicsView mainWindow;
+    mainWindow.setWindowFlags(Qt::FramelessWindowHint);
+    QFont font;
+    QGraphicsScene scene;
+
+    font.setPixelSize(70);
+
+    QGraphicsRectItem helloRect(0, 0, 200, 100);
+    helloRect.setPos(124, 300);
+    QGraphicsSimpleTextItem helloText("Hello", &helloRect);
+    helloText.setFont(font);
+    helloText.setPos(10,0);
+    scene.addItem(&helloRect);
+
+    QGraphicsRectItem worldRect(0, 0, 200, 100);
+    worldRect.setPos(600, 100);
+    QGraphicsSimpleTextItem worldText("World", &worldRect);
+    worldText.setPos(10, 0);
+    worldText.setFont(font);
+    scene.addItem(&worldRect);
+
+    QGraphicsRectItem screenRect(0, 0, 864, 480);
+    scene.addItem(&screenRect);
+
+    mainWindow.setScene(&scene);
+    mainWindow.setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    mainWindow.setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    mainWindow.setAlignment(Qt::AlignLeft | Qt::AlignTop);
+
+    mainWindow.showFullScreen();
+
+    return app.exec();
+}
+@endcode
+
+@subsection Subsection22 Contents of reactionmaptutorialapp.pro
+
+@code
+TEMPLATE = app
+
+SOURCES += main.cpp
+@endcode
+
+
+@section Section3 Using libmeegoreactionmap
+
+Now let us make this sample application use libmeegoreactionmap. The objective is to make the "Hello" box give a "press" haptic feedback when the user puts their finger on it and a "release" haptic feedback when the user lifts their finger off it.
+
+No haptic feedback is assigned to the "World" box in this tutorial.
+
+@subsection Subsection31 Modifying reactionmaptutorialapp.pro file
+
+To make the application link against libmeegoreactionmap, add the following line:
+@code
+CONFIG += meegoreactionmap
+@endcode
+
+@subsection Subsection32 Modifying main.cpp
+
+In the beginning of the file, include MReactionMap header file:
+@code
+#include <mreactionmap.h>
+@endcode
+
+This header defines the MReactionMap class.
+
+Now let us create a reaction map for our application. A reaction map contains the description of all reactive areas of an application window. In other words: it states which (if any) haptic input feedback should be given when the screen is touched for every single part of the screen.
+
+An application may only have one reaction map per top-level window. This means that if an application has more than one top-level window, there can be only one reaction map defined for each top-level window. Reaction map must be created after the top-level window in question has been created.
+
+In our case, there is only one top-level window and it is the QGraphicsView itself.
+
+MReactionMap constructor takes two parameters. The first parameter is mandatory as it is the pointer to the top-level window. It points to class QWidget which the QGraphicsView inherits. The second parameter is an optional name/identifier of the application. This information is used to locate and load all custom haptic input feedbacks that the application may have installed.
+
+Let us create our reaction map. Add the following line after @c mainWindow  creation:
+@code
+    MReactionMap reactionMap(&mainWindow, "reactionmaptutorial");
+@endcode
+
+Using MReactionMap::setReactiveDrawingValue() method sets the default "press" feedback when finger touches the screen and the default "release" feedback when finger is lifted from the screen:
+@code
+    reactionMap.setReactiveDrawingValue();
+@endcode
+
+Now add a function call to draw a rectangular reactive area around a given QGraphicsItem:
+@code
+    reactionMap.fillItemBoundRect(&helloRect);
+@endcode
+
+<b>Warning:</b> The only supported transformations are scaling and translating for the graphics items. Undefined results will follow if the item is sheared or rotated.
+
+@section Section4 Running and testing in scratchbox
+
+How can you tell that your reaction map drawing code is really working? For that we use the @c meegoreactionmap-viewer tool.
+
+Follow these steps:
+
+-# Run @c meegofeedbackd  daemon
+-# Run @c reactionmaptutorialapp
+-# Open a new Xephyr window in, for instance, DISPLAY=:3
+
+@c meegoreactionmap-viewer  will run in this separate Xephyr window you just created. @c meegoreactionmap-viewer can take several parameters but the only mandatory one is the process id of the application whose reaction map you want to visualize.
+
+Run @c meegoreactionmap-viewer  without any parameter to get information on its usage.
+
+For example: If the process id of your @c reactionmaptutorialapp  instance is @c 6655  and the extra Xephyr window is on DISPLAY 3, the resulting command line would look like this in scratchbox:
+@code
+$ DISPLAY=:3 meegoreactionmap-viewer 6655
+@endcode
+
+Your extra Xephyr window should then look similar to the following screenshot:
+
+<img width="450" alt="meegoreactionmaptutorial2.png" src="meegoreactionmaptutorial2.png" height="260"></img>
+
+In the screenshot above you can see that the only part of the screen that gives haptic feedback is the one occupied by the "Hello" box. Since you did not provide a color mapping file, the color red is used to represent the area that gives "press" feedback when touched with a finger and "release" feedback when the finger is lifted from it. For information on color mapping files, run @c meegoreactionmap-viewer  without any parameters.
+
+@subsection Subsection41 Resulting main.cpp
+@code
+#include <mreactionmap.h>
+
+#include <QApplication>
+#include <QPainter>
+
+#include <QGraphicsView>
+#include <QGraphicsRectItem>
+#include <QGraphicsSimpleTextItem>
+
+int main (int argc, char **argv)
+{
+    QApplication app(argc, argv);
+    QGraphicsView mainWindow;
+    mainWindow.setWindowFlags(Qt::FramelessWindowHint);
+
+    //Create reaction map for mainWindow
+    MReactionMap reactionMap(&mainWindow, "reactionmaptutorial");
+
+    QFont font;
+    QGraphicsScene scene;
+
+    font.setPixelSize(70);
+
+    QGraphicsRectItem helloRect(0, 0, 200, 100);
+    helloRect.setPos(124, 300);
+    QGraphicsSimpleTextItem helloText("Hello", &helloRect);
+    helloText.setFont(font);
+    helloText.setPos(10,0);
+    scene.addItem(&helloRect);
+
+    QGraphicsRectItem worldRect(0, 0, 200, 100);
+    worldRect.setPos(600, 100);
+    QGraphicsSimpleTextItem worldText("World", &worldRect);
+    worldText.setPos(10, 0);
+    worldText.setFont(font);
+    scene.addItem(&worldRect);
+
+    QGraphicsRectItem screenRect(0, 0, 864, 480);
+    scene.addItem(&screenRect);
+
+    mainWindow.setScene(&scene);
+    mainWindow.setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    mainWindow.setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    mainWindow.setAlignment(Qt::AlignLeft | Qt::AlignTop);
+
+    // Set the standard "press" feedback when finger touches the screen and
+    // the standard "release" feedback when finger is lifted from the screen
+    reactionMap.setReactiveDrawingValue();
+
+    // Draw a rectangular reactive area for "helloRect" QGraphicsItem:
+    reactionMap.fillItemBoundRect(&helloRect);
+
+    mainWindow.showFullScreen();
+
+    return app.exec();
+}
+@endcode
+
+@subsection Subsection42 Resulting reactionmaptutorialapp.pro
+@code
+TEMPLATE = app
+
+CONFIG += meegoreactionmap
+
+SOURCES += main.cpp
+@endcode
+
+
+*/

@@ -1,0 +1,21 @@
+#! /bin/sh
+# postinst script for MeeGo Touch Feedback Framework reaction maps source
+
+set -e
+
+case "$1" in
+	configure)
+        mkdir -p /usr/lib/meegofeedbackd/sources
+	if ! [ -e "/usr/lib/meegofeedbackd/sources/libmeegofeedback-reactionmap-xrecord.so" ]; then
+		ln -s /usr/lib/meegofeedbackd/libmeegofeedback-reactionmap-xrecord.so /usr/lib/meegofeedbackd/sources/libmeegofeedback-reactionmap-xrecord.so
+	fi
+	;;
+	abort-upgrade|abort-remove|abort-deconfigure)
+	;;
+	*)
+	echo "postinst called with unknown argument \`$1'" >&2
+	exit 1
+	;;
+esac
+
+exit 0

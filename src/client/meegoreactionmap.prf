@@ -1,0 +1,2 @@
+LIBS += -lmeegoreactionmap
+INCLUDEPATH += /usr/include/meegoreactionmap

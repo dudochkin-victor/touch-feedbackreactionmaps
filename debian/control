@@ -1,0 +1,105 @@
+Source: meegofeedback-reactionmaps
+Section: libs
+Priority: optional
+Maintainer: Csaba Kertesz <csaba.kertesz@vincit.fi>
+Build-Depends: debhelper (>= 4.0.0), libmeegofeedback-dev (>= 0.10.5), libqt4-dev (>= 4.7), libx11-dev, libxext-dev, pkg-config (>= 0.22), zlib1g-dev, libxtst-dev, libxcb1-dev
+Standards-Version: 3.6.1
+
+Package: meegofeedback-reactionmap
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libmeegoreactionmap0 (= ${Source-Version})
+Replaces: duifeedback-reactionmap, meegofeedback-reactionmap-xrecord
+Conflicts: duifeedback-reactionmap, meegofeedback-reactionmap-xrecord
+Description: meegofeedbackd source that reacts to touchscreen events
+ meegofeedback-reactionmap is a meegofeedbackd source that listens to events coming
+ from the kernel input subsystem and plays the corresponding feedbacks
+ according to its reaction maps painted by client applications using
+ libmeegoreactionmap0.
+
+Package: meegofeedback-reactionmap-dbg
+Architecture: any
+Section: devel
+Depends: meegofeedback-reactionmap (= ${Source-Version}), ${shlibs:Depends}
+Replaces: duifeedback-reactionmap-dbg, meegofeedback-reactionmap-xrecord-dbg
+Description: meegofeedback-reactionmap debug package
+ meegofeedback-reactionmap debug symbols.
+
+Package: meegofeedback-reactionmap-xrecord
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libmeegoreactionmap0 (= ${Source-Version})
+Replaces: duifeedback-reactionmap, meegofeedback-reactionmap
+Conflicts: duifeedback-reactionmap, meegofeedback-reactionmap
+Description: meegofeedbackd source that reacts to button press and release events from X server
+ meegofeedback-reactionmap is a meegofeedbackd source that listens to button press
+ and release events coming from the X server using XRecord extension and plays the
+ corresponding feedbacks according to its reaction maps painted by client applications
+ using libmeegoreactionmap0. NOTE: This package is meant for testing purposes only.
+
+Package: meegofeedback-reactionmap-xrecord-dbg
+Architecture: any
+Section: devel
+Depends: meegofeedback-reactionmap-xrecord (= ${Source-Version}), ${shlibs:Depends}
+Replaces: duifeedback-reactionmap-dbg, meegofeedback-reactionmap-dbg
+Description: meegofeedback-reactionmap-xrecord debug package
+ meegofeedback-reactionmap-xrecord debug symbols.
+
+Package: libmeegoreactionmap0
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Replaces: libduireactionmap0
+Conflicts: libduireactionmap0
+Description: feedback reactionmaps client library
+ Feedback Reactionmaps is a meegofeedbackd source that listens to events coming
+ from the kernel input subsystem and plays the corresponding feedbacks
+ according to its reaction maps painted by client applications using
+ libmeegoreactionmap0.
+
+Package: libmeegoreactionmap-dev
+Architecture: all
+Section: libdevel
+Depends: ${shlibs:Depends}, ${misc:Depends}, libmeegoreactionmap0 (= ${Source-Version}), libqt4-dev (>= 4.7)
+Replaces: libduireactionmap-dev
+Description: feedback reactionmaps client library (development files)
+ Feedback Reactionmap is a meegofeedbackd source that listens to events coming
+ from the kernel input subsystem and plays the corresponding feedbacks
+ according to its reaction maps painted by client applications using
+ libmeegoreactionmap.
+ .
+ This package provides the header files for libmeegoreactionmap.
+
+Package: libmeegoreactionmap0-dbg
+Architecture: any
+Section: devel
+Depends: libmeegoreactionmap0 (= ${Source-Version}), ${shlibs:Depends}
+Replaces: libduireactionmap-dbg
+Description: libmeegoreactionmap debug package
+ libmeegoreactionmap debug symbols.
+
+Package: meegoreactionmap-viewer
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libmeegoreactionmap0 (= ${Source-Version})
+Replaces: duireactionmap-viewer
+Conflicts: duireactionmap-viewer
+Description: Tool to visualize reactionmaps of libmeegofeedback-reactionmaps clients
+ Feedback Reactionmap is a meegofeedbackd source that listens to events coming
+ from the kernel input subsystem and plays the corresponding feedbacks
+ according to its reaction maps painted by client applications using
+ libmeegoreactionmaps.
+ .
+ reaction-map-viewer is a tool to visualize reaction maps of libmeegoreactionmaps
+ clients.
+
+Package: libmeegoreactionmap-tests
+Section: extra
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libmeegoreactionmap0 (= ${Source-Version}), libqtgui4, testrunner-lite, ci-testing
+XB-Maemo-CI-Packages: libmeegoreactionmap0
+XB-Maemo-CI-Stage: fast, staging, acceptance
+Description: libmeegoreactionmap unit tests
+ Unit testing binaries and shellscripts for testing libmeegoreactionmap library
+
+Package: libmeegoreactionmap-doc
+Section: doc
+Architecture: all
+Description: API documentation for libmeegoreactionmap
+

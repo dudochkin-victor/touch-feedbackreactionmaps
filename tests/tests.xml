@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<testdefinition version="1.0">
+  <suite name="libmeegoreactionmap-tests" domain="Application framework">
+    <description>Unit tests and functional tests for Reaction Maps of Haptic Feedback</description>
+    <set name="unit_tests" description="Unit Tests" feature="Reaction Maps for Haptic Feedback" level="Component" type="Functional">
+
+      <case name="ut_mfreactionmapstack" description="ut_mfreactionmapstack" requirement="" timeout="60">
+        <step expected_result="0">/usr/lib/libmeegoreactionmap-tests/ut_mfreactionmapstack</step>
+      </case>
+      <case name="ut_colormap" description="ut_colormap" requirement="" timeout="60">
+        <step expected_result="0">/usr/lib/libmeegoreactionmap-tests/ut_colormap</step>
+      </case>
+      <case name="ut_meegofeedbackpalette" description="ut_mfeedbackpalette" requirement="" timeout="60">
+        <step expected_result="0">/usr/lib/libmeegoreactionmap-tests/ut_mfeedbackpalette</step>
+      </case>
+      <case name="ut_meegoreactionmapconnection" description="ut_mreactionmapconnection" requirement="" timeout="60">
+        <step expected_result="0">/usr/lib/libmeegoreactionmap-tests/ut_mreactionmapconnection</step>
+      </case>
+      <case name="ut_meegoreactionmap" description="ut_mreactionmap" requirement="" timeout="60">
+        <!--Run test with motif style to workaround a crash caused by meegotouch-qt-style.  -->
+        <step expected_result="0">/usr/lib/libmeegoreactionmap-tests/ut_mreactionmap -style motif</step>
+      </case>
+
+      <environments>
+        <scratchbox>false</scratchbox>
+        <hardware>true</hardware>
+      </environments>
+
+    </set>
+    <set name="functional_tests" description="Functional Tests" feature="Reaction Maps for Haptic Feedback" level="Component" type="Functional">
+
+      <case name="ft_mfxlistener" description="ft_mfxlistener" requirement="" timeout="60">
+        <step expected_result="0">/usr/lib/libmeegoreactionmap-tests/ft_mfxlistener</step>
+      </case>
+      <case name="ft_touchscreenmanaging" description="ft_touchscreenmanaging" requirement="" timeout="60">
+        <step expected_result="0">/usr/lib/libmeegoreactionmap-tests/ft_touchscreenmanaging</step>
+      </case>
+
+      <environments>
+        <scratchbox>false</scratchbox>
+        <hardware>true</hardware>
+      </environments>
+
+    </set>
+  </suite>
+</testdefinition>

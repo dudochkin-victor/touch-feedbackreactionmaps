@@ -1,0 +1,7 @@
+interface: libmeegoreactionmap
+type: library
+scope: Platform
+state: stable
+libs-pkg: libmeegoreactionmap0
+dev-pkg: libmeegoreactionmap-dev
+

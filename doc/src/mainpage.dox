@@ -1,0 +1,21 @@
+/*! @mainpage libmeegoreactionmap documentation
+
+@section Introduction
+
+This library provides a way for the developer to add triggers for specific non-visual feedback in an application when the user touches a defined part of the screen. Non-visual feedback in this context includes haptics (vibration), sounds and effects using the device lights. Feedback is most often used to confirm to the user that the application interface has received their input.
+
+Specifically, the main class of the library, MReactionMap, enables the developer to place an invisible reaction map on top of the application screen. Using screen coordinates, the developer can then define sections in this reaction map and assign each one a trigger for a specific feedback. This map enables widgets (application components, such as buttons) to trigger feedback when they are pressed or released, as long as their coordinates are defined in the reactionmap.
+
+@section basicusage Basic Usage:
+
+<B>Main classes:</B>
+
+- MReactionMap : to add triggers for low latency haptic feedback to applications
+
+@section Section2 General documentation
+- <a href="tutorial.html">Tutorial for MReactionMap</a>
+
+@section Section3 API reference
+<a href="classes.html">All Classes</a>
+
+*/
